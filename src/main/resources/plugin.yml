@@ -1,0 +1,11 @@
+name: JavaJavaEvent
+version: '${project.version}'
+main: javajava.javajavaevent.JavaJavaEvent
+api-version: 1.19
+commands:
+  password:
+    aliases: pass
+  passchange:
+    aliases: passchange
+  passcheck:
+    aliases: passcheck
