@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -33,6 +34,17 @@ public static String joinname;
         JavaJavaEvent.plugin.getConfig().set("JoinName", joinname);
         JavaJavaEvent.plugin.saveConfig();
         // Plugin shutdown logic
+    }
+    @EventHandler
+    public static void onMoveEvent(PlayerMoveEvent e){
+        if(joincount.get(e.getPlayer().getName())==0){
+            e.setCancelled(true);
+            e.getPlayer().sendMessage(ChatColor.RED+"パスワードを入力してください。\n" +
+                    "/pass XXOO\n" +
+                    "xxは【はじめに】\n" +
+                    "OOは【各イベントページ】\n" +
+                    "からご確認ください。\n");
+        }
     }
     @EventHandler
     public static void onPlayerJoin(PlayerJoinEvent e){
